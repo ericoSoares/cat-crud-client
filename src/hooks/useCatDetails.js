@@ -1,8 +1,8 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { getCatDetails } from '../services/catApiMock';
 
 export const useCatDetails = (id) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -13,7 +13,7 @@ export const useCatDetails = (id) => {
       .catch(setError)
       .finally(() => setLoading(false)); */
     setData(getCatDetails(parseInt(id)));
-  }, []);
+  }, [id]);
 
   return { data, error, loading };
 };

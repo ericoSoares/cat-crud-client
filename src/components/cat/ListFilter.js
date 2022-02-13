@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ListFilter = ({ value, setValue }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="my-2 flex sm:flex-row flex-col">
       <div className="block relative">
@@ -11,18 +14,19 @@ const ListFilter = ({ value, setValue }) => {
             </path>
           </svg>
         </span>
-        <input 
+        <input
           className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
           value={value || ''}
           placeholder="Search by name"
           onChange={(e) => {
             setValue(e.target.value);
-          }}  
+          }}
         />
       </div>
       <div className="px-2">
-        <button 
+        <button
           className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
+          onClick={() => navigate('/cat/undefined')}
         >
           New cat
         </button>

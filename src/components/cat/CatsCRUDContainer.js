@@ -1,10 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import ListFilter from './ListFilter';
 import ListBody from './ListBody';
-import { getCats } from '../../services/catApiMock';
 import useCatList from '../../hooks/useCatList';
 
-const CatsLayout = () => {
+const CatsCRUDContainer = () => {
   const [filter, setFilter] = useState('');
   const { data } = useCatList();
 
@@ -28,4 +27,4 @@ const CatsLayout = () => {
   )
 }
 
-export default CatsLayout;
+export default CatsCRUDContainer;
