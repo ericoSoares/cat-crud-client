@@ -1,6 +1,8 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { generateRandomPoint } from '../../utils/geolocation';
 
 const CatMap = ({ google, latitude, longitude, cats }) => {
+
   return (
     <Map
       google={google}
@@ -16,7 +18,7 @@ const CatMap = ({ google, latitude, longitude, cats }) => {
           key={Math.random()}
           title={r.name}
           name={r.name}
-          position={{ lat: r.location.lat, lng: r.location.lng }}
+          position={generateRandomPoint({ lat: latitude, lng: longitude }, 100)}
         />
       ))}
     </Map>

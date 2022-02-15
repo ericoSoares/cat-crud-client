@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import { getCats } from '../services/catApiMock';
+import { useState, useEffect } from 'react';
+import { getCats } from '../services/catApi';
 
 export const useCatList = () => {
   const [data, setData] = useState([]);
@@ -7,12 +7,15 @@ export const useCatList = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    getCats()
+      .then(setData)
+      .catch(setError)
+      .finally(() => setLoading(false));
     /* fetch(url)
       .then(response => response.json())
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false)); */
-    setData(getCats());
   }, []);
 
   return { data, error, loading };
